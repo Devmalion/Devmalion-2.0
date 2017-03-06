@@ -4,9 +4,10 @@ $(document).ready(function() {
     var keys = {}
     var xPosition = $("#rocket").position().left;
     var yPosition = $("#rocket").position().top;;
-    var xMove = 5;
-    var yMove = 0;
-    var rotationDegrees = 0;
+    var xMove = 0;
+    var yMove = -5;
+    var rotationDegrees = -90;
+    $("#rocket").rotate(rotationDegrees);
 
     $(document).keydown(function(e) {
         keys[e.keyCode] = true;
@@ -22,6 +23,7 @@ $(document).ready(function() {
 
             // 37 left key
             if (direction == 37) {
+                $("#tutorial").remove();
                 rotationDegrees -= 3;
                 $("#rocket").rotate(rotationDegrees);
                 var rotationRadians = rotationDegrees * (Math.PI/180);
@@ -31,6 +33,7 @@ $(document).ready(function() {
             }
             // 38 up key
             if (direction == 38) {
+                $("#tutorial").remove();
                 $("#rocket").animate({top: yPosition + yMove}, 0);  
                 $("#rocket").animate({left: xPosition + xMove}, 0);
                 yPosition += yMove;
@@ -38,6 +41,7 @@ $(document).ready(function() {
             }
             // 39 right key
             if (direction == 39) {
+                $("#tutorial").remove();
                 rotationDegrees += 3;
                 $("#rocket").rotate(rotationDegrees);
                 var rotationRadians = rotationDegrees * (Math.PI/180);

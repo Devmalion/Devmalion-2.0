@@ -99,5 +99,16 @@ canvas{
   color: white; 
   position: absolute;
   opacity: 0.7;
-  top: 50px;
+  top: 238px;
+  left: 509px;
+}
+
+/* ---- tutorial ---- */
+
+#tutorial {
+  position: absolute;
+  left: 450px;
+  top: 210px;
+  color: white;
+  font-size: 1.2em;
 }
