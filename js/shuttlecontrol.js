@@ -2,10 +2,11 @@ $(document).ready(function() {
 
     setInterval(movePlane, 20);
     var keys = {}
-    var xPosition = 5
-    var yPosition = 5;
+    var xPosition = $("#rocket").position().left;
+    var yPosition = $("#rocket").position().top;;
     var xMove = 5;
     var yMove = 0;
+    var rotationDegrees = 0;
 
     $(document).keydown(function(e) {
         keys[e.keyCode] = true;
@@ -21,8 +22,12 @@ $(document).ready(function() {
 
             // 37 left key
             if (direction == 37) {
-                $("#rocket").animate({left: "-=5"}, 0)
-                ;                
+                rotationDegrees -= 3;
+                $("#rocket").rotate(rotationDegrees);
+                var rotationRadians = rotationDegrees * (Math.PI/180);
+                xMove = 5 * Math.cos(rotationRadians);
+                yMove = 5 * Math.sin(rotationRadians);
+                    
             }
             // 38 up key
             if (direction == 38) {
@@ -33,7 +38,14 @@ $(document).ready(function() {
             }
             // 39 right key
             if (direction == 39) {
-                $("#rocket").animate({left: "+=5"}, 0);  
+                rotationDegrees += 3;
+                $("#rocket").rotate(rotationDegrees);
+                var rotationRadians = rotationDegrees * (Math.PI/180);
+                xMove = 5 * Math.cos(rotationRadians);
+                yMove = 5 * Math.sin(rotationRadians);
+                console.log(rotationRadians,xMove,yMove);
+
+                 
             }
             // 40 down key
             if (direction == 40) {
